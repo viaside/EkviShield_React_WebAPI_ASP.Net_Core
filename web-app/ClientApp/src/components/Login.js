@@ -7,7 +7,8 @@ class Login extends Component {
 
         this.state = {
             Login: '',
-            Password: ''
+            Password: '',
+            authenticated: localStorage.getItem("authenticated")
         }
 
         this.Login = this.Login.bind(this);
@@ -24,16 +25,16 @@ class Login extends Component {
 
     login(event) {
         fetch('https://localhost:44450/RegUser/Login', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                Login: this.state.Login,
-                Password: this.state.Password
-            })
-        }).then((Response) => Response.json())
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Login: this.state.Login,
+                    Password: this.state.Password
+                })
+            }).then((Response) => Response.json())
             .then((result) => {
                 let res = JSON.stringify(result);
                 console.log(res)
@@ -42,15 +43,22 @@ class Login extends Component {
                 }
                 else {
                     window.location.assign('https://localhost:44450');
+
+                    localStorage.setItem('authenticated', true);
+                    localStorage.setItem('UserLogin', this.state.Login);
+
+                    this.setState({
+                        authenticated: false
+                    });
                 }
-            })
+                })
     }
 
     render() {
         return (
             <div className="login-wrapper">
                 <h1>Pleasee Log In</h1>
-                <Input type="text" onChange = { this.Login }  placeholder = "Enter Login" />
+                <Input type="text" onChange = {this.Login }  placeholder = "Enter Login" />
                 <Input type="text" onChange = {this.Password} placeholder = "Enter Password" />
                 <Button onClick={this.login} color="success" block>Login</Button>
             </div>
