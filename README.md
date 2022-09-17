@@ -6,4 +6,5 @@ WEB-Application
    ℹ️ DataBases file - backup database PostgreSql.
    
 ## Fuatures
-- "Login" and "Registration" system;
+- 🔧"Login" and "Registration" system;
+- ℹ️ View information about yourself;
