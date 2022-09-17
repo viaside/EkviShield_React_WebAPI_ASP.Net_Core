@@ -7,7 +7,7 @@ namespace web_app.EfCore
     public class UsersInfo
     {
         [Key,Required]
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;

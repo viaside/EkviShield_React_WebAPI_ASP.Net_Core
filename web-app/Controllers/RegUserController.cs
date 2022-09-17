@@ -36,6 +36,23 @@ namespace web_app.Controllers
             }
         }
 
+        [Route("GetInfo/{id}")]
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            ResponseType type = ResponseType.Success;
+            try
+            {
+                UsersInfoModel data = _db.GetUsersById(id);
+
+                return Ok(ResponseHandler.GetAppResponse(type, data));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+        }
+
         [Route("Login")]
         [HttpPost]
         public SignInResponse UserLogin(UserLogin userLogin)

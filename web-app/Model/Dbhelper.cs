@@ -15,6 +15,7 @@ namespace web_app.Model
         {
             _context = context;
         }
+
         /// <summary>
         /// GET
         /// </summary>
@@ -25,7 +26,7 @@ namespace web_app.Model
             var dataList = _context.UserInfo.ToList();
             dataList.ForEach(row => response.Add(new UsersInfoModel()
             {
-                id = row.id,
+                Id = row.Id,
                 Login = row.Login,
                 Password = row.Password,
                 Email = row.Email,
@@ -37,26 +38,27 @@ namespace web_app.Model
         public UsersInfoModel GetUsersById(int id)
         {
             UsersInfoModel response = new UsersInfoModel();
-            var row = _context.UserInfo.Where(d => d.id.Equals(id)).FirstOrDefault();
+            var dataList = _context.UserInfo.Where(d => d.Id.Equals(id)).FirstOrDefault();
             return new UsersInfoModel()
             {
-                id = row.id,
-                Login = row.Login,
-                Password = row.Password,
-                Email = row.Email,
-                DateOfBirth = row.DateOfBirth
+                Id = dataList.Id,
+                Login = dataList.Login,
+                Password = dataList.Password,
+                Email = dataList.Email,
+                DateOfBirth = dataList.DateOfBirth
             };
         }
+
         /// <summary>
         /// It serves the POST/PUT/PATCH
         /// </summary>
         public void SaveUser(UsersInfoModel userInfoModel)
         {
             UsersInfo dbTable = new UsersInfo();
-            if (userInfoModel.id > 0)
+            if (userInfoModel.Id > 0)
             {
                 //PUT
-                dbTable = _context.UserInfo.Where(d => d.id.Equals(userInfoModel.id)).FirstOrDefault();
+                dbTable = _context.UserInfo.Where(d => d.Id.Equals(userInfoModel.Id)).FirstOrDefault();
                 if (dbTable != null)
                 {
                     dbTable.Email = userInfoModel.Email;
@@ -81,25 +83,10 @@ namespace web_app.Model
 
             if (log == null)
             {
-                return new SignInResponse { Success = false};
+                return new SignInResponse{ Success = false};
             }
             else
-                return new SignInResponse { Success = true};
+                return new SignInResponse{ Success = true, Id = log.Id};
         }
-        /// <summary>
-        /// DELETE
-        /// </summary>
-        /// <param name="id"></param>
-        public void DeleteUser(int id)
-        {
-            var user = _context.UserInfo.Where(d => d.id.Equals(id)).FirstOrDefault();
-            if (user != null)
-            {
-                _context.UserInfo.Remove(user);
-                _context.SaveChanges();
-            }
-        }
-
-        
     }
 }
