@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 
@@ -46,7 +46,7 @@ export class NavMenu extends Component {
                             </ul>
                         </Collapse>
                         <NavLink tag={Link} to="/Account"> {localStorage.getItem("UserLogin") }</NavLink>
-                        <button onClick={this.LogOut }>log out</button>
+                        <Button onClick={this.LogOut }>log out</Button>
                     </Navbar>
                 </header>
                 );

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using web_app.Model;
 using web_app.EfCore;
+using System.Text.RegularExpressions;
 
 namespace web_app.Controllers
 {
@@ -69,6 +70,22 @@ namespace web_app.Controllers
                 ResponseType responseType = ResponseType.Success;
                 _db.SaveUser(model);
                 return Ok(ResponseHandler.GetAppResponse(responseType, model));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+        }
+
+        [Route("DeleteUser/{id}")]
+        [HttpPost("{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            ResponseType type = ResponseType.Success;
+            try
+            {
+                _db.DeleteUser(id);
+                return Ok(ResponseHandler.GetAppResponse(type, id));
             }
             catch(Exception ex)
             {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal;
 using System.Data;
+using System.Runtime.ConstrainedExecution;
 using System.Web.Http.Results;
 using web_app.EfCore;
 using web_app.Model;
@@ -76,12 +77,18 @@ namespace web_app.Model
             _context.SaveChanges();
         }
         
+        public void DeleteUser(int id)
+        {
+            _context.UserInfo.Remove(_context.UserInfo.Single(a => a.Id == id));
+            _context.SaveChanges();
+        }
+
         public SignInResponse LoginUser(UserLogin userlogin)
         {
             var log = _context.UserInfo.Where(x => x.Login.Equals(userlogin.Login) &&
                       x.Password.Equals(userlogin.Password)).FirstOrDefault();
 
-            if (log == null)
+            if (log == null)    
             {
                 return new SignInResponse{ Success = false};
             }
