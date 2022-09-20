@@ -88,12 +88,12 @@ namespace web_app.Model
             var log = _context.UserInfo.Where(x => x.Login.Equals(userlogin.Login) &&
                       x.Password.Equals(userlogin.Password)).FirstOrDefault();
 
-            if (log == null)    
+            if (log == null)
             {
                 return new SignInResponse{ Success = false};
             }
             else
-                return new SignInResponse{ Success = true, Id = log.Id};
+                return new SignInResponse{ Success = true, Id = log.Id, Login = log.Login};
         }
     }
 }

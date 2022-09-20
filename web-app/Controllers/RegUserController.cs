@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using web_app.Model;
 using web_app.EfCore;
-using System.Text.RegularExpressions;
+using System.Net.Http.Headers;
 
 namespace web_app.Controllers
 {
@@ -56,10 +56,37 @@ namespace web_app.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public SignInResponse UserLogin(UserLogin userLogin)
+        public IActionResult UserLogin(UserLogin userLogin)
         {
-            return _db.LoginUser(userLogin);
+            HttpResponseMessage respMessage = new HttpResponseMessage();
+
+            try
+            {
+                var CheckUserLogin = _db.LoginUser(userLogin);
+                if (CheckUserLogin.Success == true)
+                {
+                    var cookieOptions = new CookieOptions
+                    {
+                        HttpOnly = false,
+                        SameSite = SameSiteMode.None,
+                        Secure = true
+                    };
+                    Response.Cookies.Append("Id", CheckUserLogin.Id.ToString(), cookieOptions);
+                    Response.Cookies.Append("UserLogin", CheckUserLogin.Login, cookieOptions);
+                    ResponseType type = ResponseType.Success;
+                    return Ok(ResponseHandler.GetAppResponse(type, CheckUserLogin.Id));
+                }
+                else
+                {
+                    throw new InvalidOperationException("Invalid User");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
         }
+
 
         [Route("Registr")]
         [HttpPost]
@@ -92,5 +119,6 @@ namespace web_app.Controllers
                 return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
         }
+
     }
 }

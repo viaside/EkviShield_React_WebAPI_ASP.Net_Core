@@ -36,15 +36,13 @@ class Login extends Component {
                 })
             }).then((Response) => Response.json())
             .then((result) => {
-                if (result["success"] === false) {
+                console.log(result);
+                if (result["message"] != "Success") {
                     alert('Invalid User');
                 }
                 else {
                     window.location.assign('https://localhost:44450');
-
                     localStorage.setItem('authenticated', true);
-                    localStorage.setItem('UserId', result["id"]);
-                    localStorage.setItem('UserLogin', this.state.Login);
                 }
                 })
     }

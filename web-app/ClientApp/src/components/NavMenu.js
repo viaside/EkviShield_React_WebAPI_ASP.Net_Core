@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import getCookie from '../WorkWithCookie';
 
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
@@ -15,12 +16,10 @@ export class NavMenu extends Component {
         collapsed: true,
         authenticated: localStorage.getItem("authenticated")
       };
-
     }
 
     LogOut() {
         localStorage.setItem('authenticated', false);
-        localStorage.setItem('UserLogin', "");
         window.location.assign('https://localhost:44450');
     }
 
@@ -32,7 +31,7 @@ export class NavMenu extends Component {
 
 
     render() {
-        if (localStorage.getItem("authenticated") == "true") {
+        if (localStorage.getItem("authenticated") === "true") {
             return (
                 <header>
                     <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
@@ -45,7 +44,7 @@ export class NavMenu extends Component {
                                 </NavItem>
                             </ul>
                         </Collapse>
-                        <NavLink tag={Link} to="/Account"> {localStorage.getItem("UserLogin") }</NavLink>
+                        <NavLink tag={Link} to="/Account"> {getCookie("UserLogin") }</NavLink>
                         <Button onClick={this.LogOut }>log out</Button>
                     </Navbar>
                 </header>

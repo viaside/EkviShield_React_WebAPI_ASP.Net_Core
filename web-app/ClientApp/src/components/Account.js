@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
+import getCookie from '../WorkWithCookie';
 
 class Account extends Component {
     constructor() {
@@ -14,7 +15,7 @@ class Account extends Component {
     }
 
     componentDidMount() {
-        fetch('https://localhost:44450/RegUser/GetInfo/' + localStorage.getItem("UserId"), {
+        fetch('https://localhost:44450/RegUser/GetInfo/' + getCookie("Id"), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -32,8 +33,6 @@ class Account extends Component {
          fetch('https://localhost:44450/RegUser/DeleteUser/' + localStorage.getItem("UserId"), { method: 'DELETE' })
              .then(() => {
                  localStorage.setItem('authenticated', false);
-                 localStorage.setItem('UserLogin', "");
-                 localStorage.setItem('UserId', "");
                  window.location.assign('https://localhost:44450');
              })
     }
@@ -42,7 +41,7 @@ class Account extends Component {
         return (
             <div className="Account">
                 <h1>Your Info</h1>
-                <p>Your Id: {localStorage.getItem("UserId")}</p>
+                <p>Your Id: {getCookie("Id")}</p>
                 <p>Your Login: {this.state.Login}</p>
                 <p>Your Password: {this.state.Password}</p>
                 <p>Your Email: {this.state.Email}</p>

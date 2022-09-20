@@ -17,7 +17,6 @@
             {
                 case ResponseType.Success:
                     response.Message = "Success";
-
                     break;
                 case ResponseType.NotFound:
                     response.Message = "No record available";
