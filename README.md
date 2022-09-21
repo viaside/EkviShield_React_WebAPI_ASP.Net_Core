@@ -9,3 +9,4 @@ WEB-Application
 - 🔧"Login" and "Registration" system;
 - ℹ️ View information about yourself;
 - ➖ Delete yourself account;
+- 🍪 Cookie file;
