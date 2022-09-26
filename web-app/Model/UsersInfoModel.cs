@@ -1,4 +1,6 @@
-﻿namespace web_app.Model
+﻿using System.Data.SqlTypes;
+
+namespace web_app.Model
 {
     public class UsersInfoModel
     {

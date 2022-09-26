@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -19,7 +20,7 @@ namespace web_app.Migrations
                     Login = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    DateOfBirth = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {

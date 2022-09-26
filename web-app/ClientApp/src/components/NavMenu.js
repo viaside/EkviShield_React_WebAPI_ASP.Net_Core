@@ -19,8 +19,24 @@ export class NavMenu extends Component {
     }
 
     LogOut() {
-        localStorage.setItem('authenticated', false);
-        window.location.assign('https://localhost:44450');
+        fetch('https://localhost:44450/RegUser/LogOut', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+            })
+            .then((Response) => Response.json())
+            .then((result) => {
+                console.log(result);
+                if (result["message"] !== "Success") {
+                    alert('Invalid User');
+                }
+                else {
+                    localStorage.setItem('authenticated', false);
+                    window.location.assign('https://localhost:44450');
+                }
+            })
     }
 
     toggleNavbar () {
@@ -45,7 +61,7 @@ export class NavMenu extends Component {
                             </ul>
                         </Collapse>
                         <NavLink tag={Link} to="/Account"> {getCookie("UserLogin") }</NavLink>
-                        <Button onClick={this.LogOut }>log out</Button>
+                        <Button onClick={this.LogOut }>Log Out</Button>
                     </Navbar>
                 </header>
                 );

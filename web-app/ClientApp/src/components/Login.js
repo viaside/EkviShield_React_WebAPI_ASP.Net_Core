@@ -37,7 +37,7 @@ class Login extends Component {
             }).then((Response) => Response.json())
             .then((result) => {
                 console.log(result);
-                if (result["message"] != "Success") {
+                if (result["message"] !== "Success") {
                     alert('Invalid User');
                 }
                 else {

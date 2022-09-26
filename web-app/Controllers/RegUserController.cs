@@ -2,6 +2,8 @@
 using web_app.Model;
 using web_app.EfCore;
 using System.Net.Http.Headers;
+using System.Net;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace web_app.Controllers
 {
@@ -120,5 +122,56 @@ namespace web_app.Controllers
             }
         }
 
+        [Route("LogOut")]
+        [HttpPost]
+        public IActionResult LogOut()
+        {
+            ResponseType type = ResponseType.Success;
+
+            try
+            {
+                Response.Cookies.Delete("UserLogin");
+                Response.Cookies.Delete("Id");
+                return Ok(ResponseHandler.GetAppResponse(type, Response.Cookies.GetHashCode()));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+        }
+
+        [Route("ChangeLogin")]
+        [HttpPut] 
+        public IActionResult ChangeLogin([FromBody] UsersInfoModel model)
+        {
+            ResponseType type = ResponseType.Success;
+
+            try
+            {
+                _db.ChangeLogin(model);
+                return Ok(ResponseHandler.GetAppResponse(type, model.Login));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+        }
+
+        [Route("ChangePassword")]
+        [HttpPut]
+        public IActionResult ChangePassword([FromBody] UsersInfoModel model)
+        {
+            ResponseType type = ResponseType.Success;
+
+            try
+            {
+                _db.ChangePassword(model);
+                return Ok(ResponseHandler.GetAppResponse(type, model.Password));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+        }
     }
 }

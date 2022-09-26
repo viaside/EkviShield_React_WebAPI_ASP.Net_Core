@@ -68,7 +68,7 @@ class Reg extends Component {
                 <Input type="text" onChange={this.Login} placeholder="Enter Login" />
                 <Input type="password" onChange={this.Password} placeholder="Enter Password" />
                 <Input type="text" onChange={this.Email} placeholder="Enter Email" />
-                <Input type="Date" onChange={this.DateOfBirth}/>
+                <Input type="date" onChange={this.DateOfBirth}/>
                 <Button onClick={this.register} color="success" block>Create Account</Button>
             </div>
         );

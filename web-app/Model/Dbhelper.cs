@@ -62,6 +62,8 @@ namespace web_app.Model
                 dbTable = _context.UserInfo.Where(d => d.Id.Equals(userInfoModel.Id)).FirstOrDefault();
                 if (dbTable != null)
                 {
+                    dbTable.Login = userInfoModel.Login;
+                    dbTable.Password = userInfoModel.Password;
                     dbTable.Email = userInfoModel.Email;
                     dbTable.DateOfBirth = userInfoModel.DateOfBirth;
                 }
@@ -73,6 +75,28 @@ namespace web_app.Model
                 dbTable.Password = userInfoModel.Password;
                 dbTable.Email = userInfoModel.Email;
                 _context.UserInfo.Add(dbTable);
+            }
+            _context.SaveChanges();
+        }
+
+        public void ChangeLogin(UsersInfoModel usersInfoModel)
+        {
+            UsersInfo dbTable = new UsersInfo();
+            dbTable = _context.UserInfo.Where(d => d.Id.Equals(usersInfoModel.Id)).FirstOrDefault();
+            if (dbTable != null)
+            {
+                dbTable.Login = usersInfoModel.Login;
+            }
+            _context.SaveChanges();
+        }
+
+        public void ChangePassword(UsersInfoModel usersInfoModel)
+        {
+            UsersInfo dbTable = new UsersInfo();
+            dbTable = _context.UserInfo.Where(d => d.Id.Equals(usersInfoModel.Id)).FirstOrDefault();
+            if (dbTable != null)
+            {
+                dbTable.Password = usersInfoModel.Password;
             }
             _context.SaveChanges();
         }
