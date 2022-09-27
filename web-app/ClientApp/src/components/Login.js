@@ -24,7 +24,7 @@ class Login extends Component {
     }
 
     login(event) {
-        fetch('https://localhost:44450/RegUser/Login', {
+        fetch('https://localhost:44450/UserApi/Login', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
@@ -52,7 +52,7 @@ class Login extends Component {
             <div className="login-wrapper">
                 <h1>Pleasee Log In</h1>
                 <Input type="text" onChange = {this.Login }  placeholder = "Enter Login" />
-                <Input type="text" onChange = {this.Password} placeholder = "Enter Password" />
+                <Input type="password" onChange = {this.Password} placeholder = "Enter Password" />
                 <Button onClick={this.login} color="success" block>Login</Button>
             </div>
         );

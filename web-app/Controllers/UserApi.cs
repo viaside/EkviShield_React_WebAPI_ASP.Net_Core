@@ -9,11 +9,11 @@ namespace web_app.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class RegUserController : ControllerBase
+    public class UserApi : ControllerBase
     {
         private readonly DbHelper _db;
 
-        public RegUserController(EF_DataContext eF_DataContext)
+        public UserApi(EF_DataContext eF_DataContext)
         {
             _db = new DbHelper(eF_DataContext);
         }

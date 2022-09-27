@@ -27,7 +27,7 @@ class Account extends Component {
     }
 
     componentDidMount() {
-        fetch('https://localhost:44450/RegUser/GetInfo/' + getCookie("Id"), {
+        fetch('https://localhost:44450/UserApi/GetInfo/' + getCookie("Id"), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -38,15 +38,15 @@ class Account extends Component {
                 this.setState({ Login: responseData.responseData.login });
                 this.setState({ Password: responseData.responseData.password });
                 this.setState({ Email: responseData.responseData.email });
-                this.setState({ DateOfBirth: responseData.responseData.DateOfBirth });
+                this.setState({ DateOfBirth: responseData.responseData.dateOfBirth.slice(0, 10) } );
             });
     }
 
     DeleteUser(event) {
-         fetch('https://localhost:44450/RegUser/DeleteUser/' + localStorage.getItem("UserId"), { method: 'DELETE' })
+         fetch('https://localhost:44450/UserApi/DeleteUser/' + getCookie("Id"), { method: 'DELETE' })
              .then(() => {
                  localStorage.setItem('authenticated', false);
-                 window.location.assign('https://localhost:44450');
+                window.location.assign('https://localhost:44450');
              })
     }
 
@@ -62,7 +62,7 @@ class Account extends Component {
             this.setState({ TypeLogin: 'input' });
         }
         else {
-            fetch('https://localhost:44450/RegUser/ChangeLogin', {
+            fetch('https://localhost:44450/UserApi/ChangeLogin', {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
@@ -103,7 +103,7 @@ class Account extends Component {
             this.setState({ TypePassword: 'input' });
         }
         else {
-            fetch('https://localhost:44450/RegUser/ChangePassword', {
+            fetch('https://localhost:44450/UserApi/ChangePassword', {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
@@ -131,14 +131,6 @@ class Account extends Component {
             this.setState({ ClassPassword: 'btn btn-outline-secondary' });
             this.setState({ TypePassword: 'p' });
         }
-    }
-
-    ChangeEmail(event) {
-
-    }
-
-    ChangeDateOfBirth(event) {
-
     }
 
     ChangeInfo(event) {

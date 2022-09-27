@@ -14,7 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EF_DataContext>(
                 o => o.UseNpgsql(builder.Configuration.GetConnectionString("UsersDB"))
             );
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 

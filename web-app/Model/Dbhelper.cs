@@ -74,6 +74,7 @@ namespace web_app.Model
                 dbTable.Login = userInfoModel.Login;
                 dbTable.Password = userInfoModel.Password;
                 dbTable.Email = userInfoModel.Email;
+                dbTable.DateOfBirth = userInfoModel.DateOfBirth;
                 _context.UserInfo.Add(dbTable);
             }
             _context.SaveChanges();

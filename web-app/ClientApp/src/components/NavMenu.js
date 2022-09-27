@@ -19,7 +19,7 @@ export class NavMenu extends Component {
     }
 
     LogOut() {
-        fetch('https://localhost:44450/RegUser/LogOut', {
+        fetch('https://localhost:44450/UserApi/LogOut', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',

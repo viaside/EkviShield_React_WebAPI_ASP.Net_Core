@@ -48,6 +48,8 @@ namespace web_app.Migrations
                     b.HasKey("id");
 
                     b.ToTable("UsersInfo");
+
+                    b.SetStorageParameter("Npgsql.DisableDateTimeInfinityConversions", true);
                 });
 #pragma warning restore 612, 618
         }

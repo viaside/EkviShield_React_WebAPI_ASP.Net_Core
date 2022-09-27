@@ -34,7 +34,8 @@ class Reg extends Component {
     }
 
     register(event) {
-        fetch('https://localhost:44450/RegUser/Registr', {
+        console.log(this.state.DateOfBirth);
+        fetch('https://localhost:44450/UserApi/Registr', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
