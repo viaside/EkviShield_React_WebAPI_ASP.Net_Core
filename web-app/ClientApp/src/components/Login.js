@@ -49,11 +49,13 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="login-wrapper">
-                <h1>Pleasee Log In</h1>
-                <Input type="text" onChange = {this.Login }  placeholder = "Enter Login" />
-                <Input type="password" onChange = {this.Password} placeholder = "Enter Password" />
-                <Button onClick={this.login} color="success" block>Login</Button>
+            <div className="login-wrapper m-5">
+                <h1 className="text-white">Please Registr</h1>
+                <p className="px-0 m-0 text-white">Enter Login</p>
+                <Input type="text" className="InputColor border-0 text-light text-white" onChange={this.Login} placeholder="Enter Login" />
+                <p className="px-0 m-0 text-white">Enter Password</p>
+                <Input type="password" className="InputColor border-0 text-light text-white" onChange={this.Password} placeholder="Enter Password" />
+                <Button onClick={this.login} className="btnSuccess border-0 mt-3" block>Log In</Button>
             </div>
         );
     }

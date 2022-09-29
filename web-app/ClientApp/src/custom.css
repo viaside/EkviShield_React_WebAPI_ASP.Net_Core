@@ -3,6 +3,10 @@ a {
   color: #0366d6;
 }
 
+.Account {
+    margin-left:30%;
+}
+
 code {
   color: #E01A76;
 }
@@ -11,4 +15,20 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+body {
+    background-color: #1e1d23;
+}
+
+.InputColor {
+    background-color: #28273d;
+}
+
+.InputColor:focus {
+    background-color: #28273d;
+}
+
+.btnSuccess {
+    background-color: #33324a;
 }

@@ -140,36 +140,36 @@ class Account extends Component {
     render() {
         return (
             <div class="Account">
-                <div className="d-flex w-100 ">
+                <div className="d-flex w-100 text-white">
                     <div className="col-1 "><p>Id: </p> </div>
                     <div className="col-1"><p>{getCookie("Id")}</p></div>
                 </div>
 
-                <div className="d-flex w-100 ">
+                <div className="d-flex w-100 text-white">
                     <div className="col-1 "><p>Login: </p> </div>
                     <div className="col-1"><p>{this.state.Login}</p></div>
-                    <div className="col-2"><this.state.TypeLogin type="text" onChange={this.ChangeValueLogin }></this.state.TypeLogin></div>
+                    <div className="col-2"><this.state.TypeLogin type="text" className="InputColor border-0 text-light text-white" onChange={this.ChangeValueLogin }></this.state.TypeLogin></div>
                     <div className="col-2"><button onClick={this.ChangeLogin} className={this.state.ClassLogin }>{this.state.TextLogin }</button></div>
                 </div>
 
-                <div className="d-flex w-100 ">
+                <div className="d-flex w-100 text-white">
                     <div className="col-1 "><p>Password: </p> </div>
                     <div className="col-1"><p>{this.state.Password}</p></div>
-                    <div className="col-2"><this.state.TypePassword type="text" onChange={this.ChangeValuePassword}></this.state.TypePassword></div>
+                    <div className="col-2 "><this.state.TypePassword type="text" className="InputColor border-0 text-light text-white"  onChange={this.ChangeValuePassword}></this.state.TypePassword></div>
                     <div className="col-2"><button onClick={this.ChangePassword} className={this.state.ClassPassword}>{this.state.TextPassowrd}</button></div>
                 </div>
 
-                <div className="d-flex w-100 ">
+                <div className="d-flex w-100 text-white">
                     <div className="col-1 "><p>Email: </p> </div>
                     <div className="col-10"><p>{this.state.Email}</p></div>
                 </div>
 
-                <div className="d-flex w-100 ">
+                <div className="d-flex w-100 text-white">
                     <div className="col-1 "><p>Date: </p> </div>
                     <div className="col-10"><p>{this.state.DateOfBirth}</p></div>
                 </div>
 
-                <div className="d-flex w-100 ">
+                <div className="d-flex w-100 text-white">
                     <div className="col-2"><button onClick={this.DeleteUser} className="btn btn-outline-danger">Delete Account</button></div>
                 </div>
             </div>

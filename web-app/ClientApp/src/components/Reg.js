@@ -64,13 +64,17 @@ class Reg extends Component {
     render() {
 
         return (
-            <div className="login-wrapper">
-                <h1>Pleasee Registr</h1>
-                <Input type="text" onChange={this.Login} placeholder="Enter Login" />
-                <Input type="password" onChange={this.Password} placeholder="Enter Password" />
-                <Input type="text" onChange={this.Email} placeholder="Enter Email" />
-                <Input type="date" onChange={this.DateOfBirth}/>
-                <Button onClick={this.register} color="success" block>Create Account</Button>
+            <div className="login-wrapper m-5">
+                <h1 className="text-white">Please Registr</h1>
+                <p className="px-0 m-0 text-white">Enter Login</p>
+                <Input type="text" className="InputColor border-0 text-light text-white" onChange={this.Login} placeholder="Enter Login" />
+                <p className="px-0 m-0 text-white">Enter Password</p>
+                <Input type="password" className="InputColor border-0 text-light text-white" onChange={this.Password} placeholder="Enter Password" />
+                <p className="px-0 m-0 text-white">Enter Email</p>
+                <Input type="text" className="InputColor border-0 text-light text-white"  onChange={this.Email} placeholder="Enter Email" />
+                <p className="px-0 m-0 text-white">Enter Date Of Birth</p>
+                <Input type="date" className="InputColor border-0 text-light text-white"  onChange={this.DateOfBirth}/>
+                <Button onClick={this.register} className="btnSuccess border-0 mt-3" block>Create Account</Button>
             </div>
         );
     }

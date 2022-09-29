@@ -50,18 +50,22 @@ export class NavMenu extends Component {
         if (localStorage.getItem("authenticated") === "true") {
             return (
                 <header>
-                    <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-                        <NavbarBrand tag={Link} to="/">EKVI SHIELD</NavbarBrand>
+                    <Navbar className="navbar-expand-lg navbar-toggleable-sm bg-dark navbar-light box-shadow " container light>
+                        <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
+                        <div className="flex-grow-1">
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
                         <Collapse isOpen={!this.state.collapsed} navbar>
-                            <ul className="navbar-nav  flex-grow">
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                                </NavItem>
+                            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
+                                    </NavItem>
                             </ul>
-                        </Collapse>
-                        <NavLink tag={Link} to="/Account"> {getCookie("UserLogin") }</NavLink>
-                        <Button onClick={this.LogOut }>Log Out</Button>
+                            </Collapse>
+                        </div>
+                        <div className="flex-grow-2">
+                                <NavLink tag={Link} className="text-white" to="/Account">{getCookie("UserLogin")}</NavLink>
+                        </div>  
+                        <Button onClick={this.LogOut}>Log Out</Button>
                     </Navbar>
                 </header>
                 );
@@ -70,18 +74,22 @@ export class NavMenu extends Component {
         else {
             return (
                 <header>
-                    <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-                        <NavbarBrand tag={Link} to="/">web_app</NavbarBrand>
+                    <Navbar className="navbar-expand-lg navbar-toggleable-sm bg-dark navbar-light box-shadow " container light>
+                        <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
+                        <div className="flex-grow-1">
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
                         <Collapse isOpen={!this.state.collapsed} navbar>
-                            <ul className="navbar-nav flex-grow">
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                                </NavItem>
+                            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
+                                    </NavItem>
                             </ul>
-                        </Collapse>
-                        <NavLink tag={Link} to="/Reg">Registration</NavLink>
-                        <NavLink tag={Link} to="/Login">Log in </NavLink>
+                            </Collapse>
+                        </div>
+                        <div className="flex-grow-2">
+                                <NavLink tag={Link} className="text-white" to="/Reg">Registration</NavLink>
+                                <NavLink tag={Link} className="text-white" to="/Login">Log in </NavLink>
+                        </div>  
                     </Navbar>
                 </header>
             );
