@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class Reg extends Component {
     constructor() {
@@ -34,35 +34,50 @@ class Reg extends Component {
     }
 
     register(event) {
-        console.log(this.state.DateOfBirth);
-        fetch('https://localhost:44450/UserApi/Registr', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                Login: this.state.Login,
-                Password: this.state.Password,
-                Email: this.state.Email,
-                DateOfBirth: this.state.DateOfBirth,
-            })
-        }).then((Response) => Response.json())
-            .then((Result) => {
-                console.log(Result);
-                let res = JSON.stringify(Result);
-                console.log(res)
-                if (res === '{"success":false}') {
-                    alert('Invalid User');
-                }
-                else {
-                    window.location.assign('https://localhost:44450/Login');
-                }
-            })
+        if (this.state.Login === '' && this.state.Password === '' && this.state.Email === '' && this.state.DateOfBirth === '') {
+            alert("Enter all fields");
+        }
+        else if (this.state.Login === '') {
+            alert("Enter Login");
+        }
+        else if (this.state.Password === '') {
+            alert("Enter Password");
+        }
+        else if (this.state.Email === '') {
+            alert("Enter Email");
+        }
+        else if (this.state.DateOfBirth === '') {
+            alert("Enter Date Of Birth");
+        }
+        else {
+            fetch('https://localhost:44450/UserApi/Registr', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Login: this.state.Login,
+                    Password: this.state.Password,
+                    Email: this.state.Email,
+                    DateOfBirth: this.state.DateOfBirth,
+                })
+            }).then((Response) => Response.json())
+                .then((Result) => {
+                    console.log(Result);
+                    let res = JSON.stringify(Result);
+                    console.log(res)
+                    if (res === '{"success":false}') {
+                        alert('Invalid User');
+                    }
+                    else {
+                        window.location.assign('https://localhost:44450/Login');
+                    }
+                })
+        }
     }
 
     render() {
-
         return (
             <div className="Registr">
                 <section className="background-radial-gradient text-light">

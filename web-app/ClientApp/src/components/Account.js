@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import getCookie from '../WorkWithCookie';
 
 class Account extends Component {
@@ -71,32 +71,40 @@ class Account extends Component {
             this.setState({ TypeLogin: 'Input' });
         }
         else {
-            fetch('https://localhost:44450/UserApi/ChangeLogin', {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: getCookie("Id"),
-                    Login: this.state.NewLogin,
-                })
-            }).then((Response) => Response.json())
-                .then((Result) => {
-                    console.log(Result);
-                    let res = JSON.stringify(Result);
-                    console.log(res)
-                    if (res === '{"success":false}') {
-                        this.setState({ isOpen: true });
-                    }
-                    else {
-                        window.location.reload();
-                    }
-                })
-            this.setState({ TextLogin: "Change this" });
-            this.setState({ saveLogin: false });
-            this.setState({ ClassLogin: 'btn btn-outline-secondary' });
-            this.setState({ TypeLogin: 'p' });
+            if (this.state.NewLogin !== '') {
+                if (this.state.NewLogin !== this.state.Login) {
+                    fetch('https://localhost:44450/UserApi/ChangeLogin', {
+                        method: 'PUT',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: getCookie("Id"),
+                            Login: this.state.NewLogin,
+                        })
+                    }).then((Response) => Response.json())
+                        .then((Result) => {
+                            console.log(Result);
+                            let res = JSON.stringify(Result);
+                            console.log(res)
+                            if (res === '{"success":false}') {
+                                this.setState({ isOpen: true });
+                            }
+                            else {
+                                window.location.reload();
+                            }
+                        })
+                    this.setState({ TextLogin: "Change this" });
+                    this.setState({ saveLogin: false });
+                    this.setState({ ClassLogin: 'btn btn-outline-secondary' });
+                    this.setState({ TypeLogin: 'p' });
+                }
+                alert("Login cannot be the same");
+            }
+            else {
+                alert("Enter value");
+            }
         }
     }
 
@@ -112,33 +120,43 @@ class Account extends Component {
             this.setState({ TypePassword: 'input' });
         }
         else {
-            fetch('https://localhost:44450/UserApi/ChangePassword', {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: getCookie("Id"),
-                    password: this.state.NewPassword,
-                })
-            }).then((Response) => Response.json())
-                .then((Result) => {
-                    console.log(Result);
-                    let res = JSON.stringify(Result);
-                    console.log(res)
-                    if (res === '{"success":false}') {
-                        alert('Invalid Login');
-                    }
-                    else {
-                        window.location.reload();
-                    }
-                })
-            console.log(this.state.NewPassword);
-            this.setState({ TextPassowrd: "Change this" });
-            this.setState({ savePassword: false });
-            this.setState({ ClassPassword: 'btn btn-outline-secondary' });
-            this.setState({ TypePassword: 'p' });
+            if (this.state.NewPassword !== '') {
+                if (this.state.NewPassword !== this.state.Password) {
+                    fetch('https://localhost:44450/UserApi/ChangePassword', {
+                        method: 'PUT',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: getCookie("Id"),
+                            password: this.state.NewPassword,
+                        })
+                    }).then((Response) => Response.json())
+                        .then((Result) => {
+                            console.log(Result);
+                            let res = JSON.stringify(Result);
+                            console.log(res)
+                            if (res === '{"success":false}') {
+                                alert('Invalid Login');
+                            }
+                            else {
+                                window.location.reload();
+                            }
+                        })
+                    console.log(this.state.NewPassword);
+                    this.setState({ TextPassowrd: "Change this" });
+                    this.setState({ savePassword: false });
+                    this.setState({ ClassPassword: 'btn btn-outline-secondary' });
+                    this.setState({ TypePassword: 'p' });
+                }
+                else {
+                    alert("Password cannot be the same")
+                }
+            }
+            else {
+                alert("Enter value");
+            }
         }
     }
 
@@ -214,6 +232,12 @@ class Account extends Component {
                                                     <p class="text-dark mb-0">{this.state.DateOfBirth}</p>
                                                 </div>
                                             </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <Button className="btn btn-danger" onClick={this.toggle }>Delete account</Button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -221,6 +245,16 @@ class Account extends Component {
                         </div>
                     </div>
                 </section>
+                <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                    <div className="DeffaultBackGround text-light">
+                        <ModalHeader toggle={this.toggle}>Delete account</ModalHeader>
+                        <ModalBody>After the account is deleted, the data cannot be returned</ModalBody>
+                        <ModalFooter>
+                            <button onClick={this.DeleteUser} className="btn btn-danger">Okey, Delete my account</button>{' '}
+                            <button onClick={this.toggle} className="btn btn-secondary">Cancel</button>{' '}
+                        </ModalFooter>
+                    </div>
+                </Modal>
             </div>
         );
     }

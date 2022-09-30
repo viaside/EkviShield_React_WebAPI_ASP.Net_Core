@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalFooter } from 'reactstrap';
 
 class Login extends Component {
     constructor() {
@@ -32,7 +32,18 @@ class Login extends Component {
     }
 
     login(event) {
-        fetch('https://localhost:44450/UserApi/Login', {
+        if (this.state.Login ===  '' && this.state.Password === '')
+        {
+            alert("Enter all fields");
+        }
+        else if (this.state.Login === '') {
+            alert("Enter login");
+        }
+        else if (this.state.Password === '') {
+            alert("Enter password");
+        }
+        else {
+            fetch('https://localhost:44450/UserApi/Login', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
@@ -43,16 +54,17 @@ class Login extends Component {
                     Password: this.state.Password
                 })
             }).then((Response) => Response.json())
-            .then((result) => {
-                console.log(result);
-                if (result["message"] !== "Success") {
-                    this.toggle();
-                }
-                else {
-                    window.location.assign('https://localhost:44450');
-                    localStorage.setItem('authenticated', true);
-                }
+                .then((result) => {
+                    console.log(result);
+                    if (result["message"] !== "Success") {
+                        this.toggle();
+                    }
+                    else {
+                        window.location.assign('https://localhost:44450');
+                        localStorage.setItem('authenticated', true);
+                    }
                 })
+        }
     }
 
     render() {
