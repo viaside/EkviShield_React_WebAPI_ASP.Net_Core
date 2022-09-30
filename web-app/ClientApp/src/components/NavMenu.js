@@ -50,7 +50,7 @@ export class NavMenu extends Component {
         if (localStorage.getItem("authenticated") === "true") {
             return (
                 <header>
-                    <Navbar className="navbar-expand-lg navbar-toggleable-sm bg-dark navbar-light box-shadow " container light>
+                    <Navbar className="navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid    " container light>
                         <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
                         <div className="flex-grow-1">
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -68,7 +68,7 @@ export class NavMenu extends Component {
                         <div className="flex-grow-2">
                                 <NavLink tag={Link} className="text-white" to="/Account">{getCookie("UserLogin")}</NavLink>
                         </div>  
-                        <Button onClick={this.LogOut}>Log Out</Button>
+                        <Button className="btnSuccess border-0 " onClick={this.LogOut}>Log Out</Button>
                     </Navbar>
                 </header>
                 );
@@ -76,8 +76,8 @@ export class NavMenu extends Component {
 
         else {
             return (
-                <header>
-                    <Navbar className="navbar-expand-lg navbar-toggleable-sm bg-dark navbar-light box-shadow " container light>
+               <header>
+                    <Navbar className="navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid   " container light>
                         <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
                         <div className="flex-grow-1">
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />

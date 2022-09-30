@@ -3,9 +3,6 @@ a {
   color: #0366d6;
 }
 
-.Account {
-    margin-left:30%;
-}
 
 code {
   color: #E01A76;
@@ -16,8 +13,12 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
+html {
+    height: 100%;
+}
 body {
+    padding-top: 70px;
+    height:100%;
     background-color: hsl(218, 41%, 15%);
     background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
 }
@@ -70,9 +71,6 @@ body {
     backdrop-filter: saturate(200%) blur(25px);
 }
 
-.Test {
-    overflow: visible;
-}
 
 .border-radius {
     background-color: rgba(196, 120, 235, .6);

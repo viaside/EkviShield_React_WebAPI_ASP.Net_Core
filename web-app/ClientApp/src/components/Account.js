@@ -162,7 +162,7 @@ class Account extends Component {
 
     render() {
         return (
-            <div className="Test">
+            <div className="Account">
                 <section>
                     <div className="container px-4 py-5 px-md-5 text-center text-dark text-lg-start my-5">
                         <div className="border-radius ">

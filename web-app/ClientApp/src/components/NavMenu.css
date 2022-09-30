@@ -27,3 +27,17 @@ html {
 .flex-grow-1 {
     flex-grow: 1;
 }
+
+.bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+}
+
+.Test {
+    overflow: visible;
+}
+
+
+.d {
+    background-color: rgba(59, 5, 68, .5)
+}
