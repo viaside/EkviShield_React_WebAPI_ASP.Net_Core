@@ -59,6 +59,9 @@ export class NavMenu extends Component {
                                     <NavItem>
                                         <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
                                     </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-white" to="/Test">Test</NavLink>
+                                    </NavItem>
                             </ul>
                             </Collapse>
                         </div>
@@ -82,6 +85,9 @@ export class NavMenu extends Component {
                             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                                     <NavItem>
                                         <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-white" to="/Test">Test</NavLink>
                                     </NavItem>
                             </ul>
                             </Collapse>

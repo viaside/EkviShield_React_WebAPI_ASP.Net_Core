@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import getCookie from '../WorkWithCookie';
 
 class Account extends Component {
@@ -12,18 +13,26 @@ class Account extends Component {
             NewPassword: '',
             Email: '',
             DateOfBirth: '',
-            TextLogin: 'ChangeThis',
+            TextLogin: 'Change This',
             saveLogin: false,
-            ClassLogin: 'btn btn-outline-secondary',
+            ClassLogin: 'btn btn-outline-secondary text-dark',
             TypeLogin: 'p',
-            TextPassowrd: 'ChangeThis',
+            TextPassowrd: 'Change This',
             savePassword: false,
-            ClassPassword: 'btn btn-outline-secondary',
-            TypePassword: 'p'
+            ClassPassword: 'btn btn-outline-secondary text-dark',
+            TypePassword: 'p',
+            modal: false
         }
 
         this.ChangeValuePassword = this.ChangeValuePassword.bind(this);
         this.ChangeValueLogin = this.ChangeValueLogin.bind(this);
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
     }
 
     componentDidMount() {
@@ -38,28 +47,28 @@ class Account extends Component {
                 this.setState({ Login: responseData.responseData.login });
                 this.setState({ Password: responseData.responseData.password });
                 this.setState({ Email: responseData.responseData.email });
-                this.setState({ DateOfBirth: responseData.responseData.dateOfBirth.slice(0, 10) } );
+                this.setState({ DateOfBirth: responseData.responseData.dateOfBirth.slice(0, 10) });
             });
     }
 
-    DeleteUser(event) {
-         fetch('https://localhost:44450/UserApi/DeleteUser/' + getCookie("Id"), { method: 'DELETE' })
-             .then(() => {
-                 localStorage.setItem('authenticated', false);
+    DeleteUser = () => {
+        fetch('https://localhost:44450/UserApi/DeleteUser/' + getCookie("Id"), { method: 'DELETE' })
+            .then(() => {
+                localStorage.setItem('authenticated', false);
                 window.location.assign('https://localhost:44450');
-             })
+            })
     }
 
     ChangeValueLogin(event) {
         this.setState({ NewLogin: event.target.value })
     }
 
-    ChangeLogin = () =>  {
+    ChangeLogin = () => {
         if (this.state.saveLogin === false) {
             this.setState({ TextLogin: "Save changes" });
             this.setState({ saveLogin: true });
             this.setState({ ClassLogin: 'btn btn-outline-success' });
-            this.setState({ TypeLogin: 'input' });
+            this.setState({ TypeLogin: 'Input' });
         }
         else {
             fetch('https://localhost:44450/UserApi/ChangeLogin', {
@@ -78,13 +87,13 @@ class Account extends Component {
                     let res = JSON.stringify(Result);
                     console.log(res)
                     if (res === '{"success":false}') {
-                        alert('Invalid Login');
+                        this.setState({ isOpen: true });
                     }
                     else {
                         window.location.reload();
                     }
                 })
-            this.setState({ TextLogin: "Change this"});
+            this.setState({ TextLogin: "Change this" });
             this.setState({ saveLogin: false });
             this.setState({ ClassLogin: 'btn btn-outline-secondary' });
             this.setState({ TypeLogin: 'p' });
@@ -95,7 +104,7 @@ class Account extends Component {
         this.setState({ NewPassword: event.target.value })
     }
 
-    ChangePassword = () =>{
+    ChangePassword = () => {
         if (this.state.savePassword === false) {
             this.setState({ TextPassowrd: "Save changes" });
             this.setState({ savePassword: true });
@@ -133,45 +142,85 @@ class Account extends Component {
         }
     }
 
-    ChangeInfo(event) {
-        window.location.assign('https://localhost:44450/ChangeInfo');
-    }
-
     render() {
         return (
-            <div class="Account">
-                <div className="d-flex w-100 text-white">
-                    <div className="col-1 "><p>Id: </p> </div>
-                    <div className="col-1"><p>{getCookie("Id")}</p></div>
-                </div>
-
-                <div className="d-flex w-100 text-white">
-                    <div className="col-1 "><p>Login: </p> </div>
-                    <div className="col-1"><p>{this.state.Login}</p></div>
-                    <div className="col-2"><this.state.TypeLogin type="text" className="InputColor border-0 text-light text-white" onChange={this.ChangeValueLogin }></this.state.TypeLogin></div>
-                    <div className="col-2"><button onClick={this.ChangeLogin} className={this.state.ClassLogin }>{this.state.TextLogin }</button></div>
-                </div>
-
-                <div className="d-flex w-100 text-white">
-                    <div className="col-1 "><p>Password: </p> </div>
-                    <div className="col-1"><p>{this.state.Password}</p></div>
-                    <div className="col-2 "><this.state.TypePassword type="text" className="InputColor border-0 text-light text-white"  onChange={this.ChangeValuePassword}></this.state.TypePassword></div>
-                    <div className="col-2"><button onClick={this.ChangePassword} className={this.state.ClassPassword}>{this.state.TextPassowrd}</button></div>
-                </div>
-
-                <div className="d-flex w-100 text-white">
-                    <div className="col-1 "><p>Email: </p> </div>
-                    <div className="col-10"><p>{this.state.Email}</p></div>
-                </div>
-
-                <div className="d-flex w-100 text-white">
-                    <div className="col-1 "><p>Date: </p> </div>
-                    <div className="col-10"><p>{this.state.DateOfBirth}</p></div>
-                </div>
-
-                <div className="d-flex w-100 text-white">
-                    <div className="col-2"><button onClick={this.DeleteUser} className="btn btn-outline-danger">Delete Account</button></div>
-                </div>
+            <div className="Test">
+                <section>
+                    <div className="container px-4 py-5 px-md-5 text-center text-dark text-lg-start my-5">
+                        <div className="border-radius ">
+                        <h1 className="text-center">EKVI SHIELD</h1>
+                        <h2 className="text-center">Your account</h2>
+                        </div>  
+                        <div className="col-lg-12 mb-1 mb-lg-4 position-relative">
+                            <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
+                            <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
+                            <div class="container py-5 text-dark ">
+                                <div class="col-lg-12 ">
+                                    <div class="card mb-4 border-radius">
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Id</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="text-dark mb-0">{getCookie("Id")}</p>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Login</p>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <p class="text-dark mb-0">{this.state.Login}</p>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <this.state.TypeLogin type="text" className="InputColor border-0 " onChange={this.ChangeValueLogin} />
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button onClick={this.ChangeLogin} className={this.state.ClassLogin}>{this.state.TextLogin}</button>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Password</p>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <p class="text-dark mb-0">{this.state.Password}</p>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <this.state.TypePassword type="text" className="InputColor border-0 " onChange={this.ChangeValuePassword} />
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button onClick={this.ChangePassword} className={this.state.ClassPassword}>{this.state.TextPassowrd}</button>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Email</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="text-dark mb-0">{this.state.Email}</p>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Date of birth</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="text-dark mb-0">{this.state.DateOfBirth}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         );
     }
