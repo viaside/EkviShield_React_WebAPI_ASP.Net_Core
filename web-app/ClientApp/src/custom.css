@@ -15,10 +15,12 @@ code {
 }
 html {
     height: 100%;
+    font-family: cursive;
 }
 body {
-    padding-top: 70px;
     height:100%;
+    font-family: 'Lucida Console';
+    font-size:14px;
     background-color: hsl(218, 41%, 15%);
     background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
 }
@@ -36,7 +38,7 @@ body {
 }
 
 .DeffaultBackGround {
-    background-color: #1e1d23;
+    background: #4f2d48;
 }
 
 .modal-backdrop {
@@ -76,4 +78,27 @@ body {
     background-color: rgba(196, 120, 235, .6);
     border-radius: 25px;
     border:0;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-bg {
+    width: 100%;
+    height: 650px;
+    max-width: 100%;
+    background-image: url("../public/BG.svg");
+    background-position:center;
+}
+
+.Home{
+    background-color:white;
+}
+
+.text-wh{
+    
 }
