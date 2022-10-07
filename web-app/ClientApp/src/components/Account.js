@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import getCookie from '../WorkWithCookie';
 
 class Account extends Component {
@@ -15,11 +15,11 @@ class Account extends Component {
             DateOfBirth: '',
             TextLogin: 'Change This',
             saveLogin: false,
-            ClassLogin: 'btn btn-outline-secondary text-dark',
+            ClassLogin: 'btn btn-outline-secondary ',
             TypeLogin: 'p',
             TextPassowrd: 'Change This',
             savePassword: false,
-            ClassPassword: 'btn btn-outline-secondary text-dark',
+            ClassPassword: 'btn btn-outline-secondary',
             TypePassword: 'p',
             modal: false
         }
@@ -163,79 +163,78 @@ class Account extends Component {
     render() {
         return (
             <div className="Account">
-                <section>
-                    <div className="container px-4 py-5 px-md-5 text-center text-dark text-lg-start my-5">
-                        <div className="border-radius ">
-                        <h1 className="text-center">EKVI SHIELD</h1>
-                        <h2 className="text-center">Your account</h2>
-                        </div>  
-                        <div className="col-lg-12 mb-1 mb-lg-4 position-relative">
-                            <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
-                            <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
-                            <div class="container py-5 text-dark ">
-                                <div class="col-lg-12 ">
-                                    <div class="card mb-4 border-radius">
-                                        <div class="card-body ">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Id</p>
+                <div className="text-bg p-5 DeffaultBackGround text-white">
+                    <div className="text-center text-dark p-5"><h1>EKVI SHIELD<br />Your account</h1></div>
+                    <section>
+                        <div className="text-lg-start p-5">
+                            <div className="col-lg-12 mb-1 position-relative">
+                                <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
+                                <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
+                                <div class="container py-5">
+                                    <div class="col-lg-12 ">
+                                        <div class="card mb-4 border-radius">
+                                            <div class="card-body ">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <p class="mb-0">Id</p>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <p class="mb-0">{getCookie("Id")}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-9">
-                                                    <p class="text-dark mb-0">{getCookie("Id")}</p>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <p class="mb-0">Login</p>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <p class="mb-0">{this.state.Login}</p>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <this.state.TypeLogin type="text" className="" onChange={this.ChangeValueLogin} />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <button onClick={this.ChangeLogin} className={this.state.ClassLogin}>{this.state.TextLogin}</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Login</p>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <p class="mb-0">Password</p>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <p class="mb-0">{this.state.Password}</p>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <this.state.TypePassword type="text" className="" onChange={this.ChangeValuePassword} />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <button onClick={this.ChangePassword} className={this.state.ClassPassword}>{this.state.TextPassowrd}</button>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <p class="text-dark mb-0">{this.state.Login}</p>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <p class="mb-0">Email</p>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <p class=" mb-0">{this.state.Email}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-5">
-                                                    <this.state.TypeLogin type="text" className="InputColor border-0 " onChange={this.ChangeValueLogin} />
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <p class="mb-0">Date of birth</p>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <p class=" mb-0">{this.state.DateOfBirth}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <button onClick={this.ChangeLogin} className={this.state.ClassLogin}>{this.state.TextLogin}</button>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Password</p>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <p class="text-dark mb-0">{this.state.Password}</p>
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <this.state.TypePassword type="text" className="InputColor border-0 " onChange={this.ChangeValuePassword} />
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <button onClick={this.ChangePassword} className={this.state.ClassPassword}>{this.state.TextPassowrd}</button>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Email</p>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <p class="text-dark mb-0">{this.state.Email}</p>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0">Date of birth</p>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <p class="text-dark mb-0">{this.state.DateOfBirth}</p>
-                                                </div>
-                                            </div>
-                                            <hr/>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <Button className="btn btn-danger" onClick={this.toggle }>Delete account</Button>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <Button className="btn btn-danger" onClick={this.toggle}>Delete account</Button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -243,8 +242,8 @@ class Account extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <div className="DeffaultBackGround text-light">
                         <ModalHeader toggle={this.toggle}>Delete account</ModalHeader>

@@ -79,55 +79,47 @@ class Reg extends Component {
 
     render() {
         return (
-            <div className="Registr">
-                <section className="background-radial-gradient text-light">
-                    <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-                        <div className="row gx-lg-5 align-items-center mb-5">
-                            <div className="col-lg-6 mb-5 mb-lg-0">
-                                <h1 className="my-5 display-5 fw-bold ls-tight">
-                                    EKVI <br />
-                                    <span>SHIELD</span>
-                                </h1>
-                                <p className="mb-4 opacity-70">
-                                    
+            <div className="Login">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-sm-6 col-md-7 intro-section">
+                            <div className="intro-content-wrapper">
+                                <h1 className="display-1">Welcome to EkviShield!</h1>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna
                                 </p>
                             </div>
-
-                            <div className="col-lg-6 mb-5 mb-lg-0 position-relative ">
-                                <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
-                                <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
-
-                                <div className="card bg-glass border-radius">
-                                    <div className="card-body px-4 py-5 px-md-5 bg-dark border-radius">
-                                        <form>
-                                            <div className="form-outline mb-4">
-                                                <input onChange={this.Login} type="text" className="form-control" />
-                                                <label className="form-label" htmlFor="form3Example3">Login</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input onChange={this.Password} type="password" className="form-control" />
-                                                <label className="form-label" htmlFor="form3Example3">Password</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input onChange={this.Email} type="email" className="form-control" />
-                                                <label className="form-label" htmlFor="form3Example4">Email address</label>
-                                            </div>
-
-                                            <div className="form-outline mb-4">
-                                                <input onChange={this.DateOfBirth} type="date" className="form-control" />
-                                                <label className="form-label" htmlFor="form3Example4">Date of birth</label>
-                                            </div>
-
-                                            <Button onClick={this.register} className="btnSuccess border-0 mt-3" block>Create account</Button>
-                                        </form>
+                        </div>
+                        <div className="col-sm-6 col-md-5 form-section bg-dark text-white">
+                            <div className="px-4 py-5 px-md-5">
+                                <form>
+                                    <div className="form-outline mb-4">
+                                        <input onChange={this.Login} type="text" className="form-control" />
+                                        <label className="form-label" htmlFor="form3Example3">Login</label>
                                     </div>
-                                </div>
+
+                                    <div className="form-outline mb-4">
+                                        <input onChange={this.Password} type="password" className="form-control" />
+                                        <label className="form-label" htmlFor="form3Example3">Password</label>
+                                    </div>
+
+                                    <div className="form-outline mb-4">
+                                        <input onChange={this.Email} type="email" className="form-control" />
+                                        <label className="form-label" htmlFor="form3Example4">Email address</label>
+                                    </div>
+
+                                    <div className="form-outline mb-4">
+                                        <input onChange={this.DateOfBirth} type="date" className="form-control" />
+                                        <label className="form-label" htmlFor="form3Example4">Date of birth</label>
+                                    </div>
+
+                                    <Button onClick={this.register} className="btnSuccess border-0 mt-3" block>Create account</Button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
         );
     }
