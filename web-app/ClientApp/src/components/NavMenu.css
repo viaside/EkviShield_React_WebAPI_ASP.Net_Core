@@ -2,17 +2,31 @@
     white-space: normal;
     text-align: right;
     word-break: break-all;
+    display:flex
+}
+
+.navbar{
+    height:100px;
+}
+
+.navbar-inner {
+    height: 70px;
+    position: sticky;
+    top: 0;
+}
+
+.navbar-outer {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    height: 100px;
+    top: -50px;
 }
 
 html {
   font-size: 16px;
 }
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-        font-family: 'Times New Roman', Times, serif;
-    }
-}
+
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
@@ -34,9 +48,6 @@ html {
     backdrop-filter: saturate(200%) blur(25px);
 }
 
-.Test {
-    overflow: visible;
-}
 
 
 .d {

@@ -94,3 +94,8 @@ body {
     background-image: url("../public/BG.svg");
     background-position:center;
 }
+
+.absolute {
+    position:absolute;
+    top:0px;
+}

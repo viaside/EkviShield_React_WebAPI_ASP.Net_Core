@@ -76,8 +76,8 @@ export class NavMenu extends Component {
 
         else {
             return (
-               <header>
-                    <Navbar className="navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid   " container light>
+                <header className="navbar-outer navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid navbar-inner">
+                    <Navbar className="navbar-expand-lg  navbar-toggleable-sm box-shadow fixed-top navbar-scroll container-fluid navbar-inner " container light>
                         <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
                         <div className="flex-grow-1">
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />

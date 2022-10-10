@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 import {  } from 'reactstrap';
 import '../custom.css';
 import girl2 from '../Images/woman2.webp';
+import bg from '../Images/BG.svg'
 
 class Home extends Component {
     render() {
         return (
             <div className="Home">
-                <div className="text-white text-bg DeffaultBackGround">
+                <img  className="absolute" src={bg}></img>
+                <div className="text-white text-bg DeffaultBackGround ">
                     <div className="centered"><h1>THE ROLE OF THE BUDGET OF THE CITY <br /> OF MOSCOW IN REDUCING POVERTY</h1></div>
                 </div>
 
@@ -27,7 +29,7 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="DeffaultBackGround text-center text-white ">
+                <div className="DeffaultBackGround text-center text-white">
                      <div class="p-5">
                          <div class="p-2"><img width="200px" height="200px"></img></div>
                          <div class="p-2"><h1>Healthcar <br/> Education</h1></div>
