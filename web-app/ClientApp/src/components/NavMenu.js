@@ -16,6 +16,19 @@ export class NavMenu extends Component {
         collapsed: true,
         authenticated: localStorage.getItem("authenticated")
       };
+
+      var minOffset = 750;
+      window.onscroll = function () {
+          let has_class = document.body.classList.contains("scroll_navbar");
+
+          if (minOffset < document.documentElement.scrollTop) {
+              if (!has_class) {
+                  document.body.classList.add("scroll_navbar");
+              }
+          } else if (has_class) {
+              document.body.classList.remove("scroll_navbar");
+          }
+      }
     }
 
     LogOut() {
@@ -43,14 +56,14 @@ export class NavMenu extends Component {
         this.setState({
             collapsed: !this.state.collapsed
         });
-    }
+}
 
 
     render() {
         if (localStorage.getItem("authenticated") === "true") {
             return (
                 <header>
-                    <Navbar className="navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid    " container light>
+                    <Navbar className="navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid" container light>
                         <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
                         <div className="flex-grow-1">
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -76,21 +89,14 @@ export class NavMenu extends Component {
 
         else {
             return (
-                <header className="navbar-outer navbar-expand-lg navbar-toggleable-sm box-shadow fixed-top navbar-scroll d container-fluid navbar-inner">
-                    <Navbar className="navbar-expand-lg  navbar-toggleable-sm box-shadow fixed-top navbar-scroll container-fluid navbar-inner " container light>
+                <header id="header" className="navbar-outer navbar-expand-lg fixed-top">
+                    <Navbar className="container-fluid navbar-inner " container light>
                         <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
                         <div className="flex-grow-1">
-                        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-                        <Collapse isOpen={!this.state.collapsed} navbar>
                             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                                    <NavItem>
-                                        <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink tag={Link} className="text-white" to="/Test">Test</NavLink>
-                                    </NavItem>
+                                     <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
+                                     <NavLink tag={Link} className="text-white" to="/Test">Test</NavLink>
                             </ul>
-                            </Collapse>
                         </div>
                         <div className="flex-grow-2">
                                 <NavLink tag={Link} className="text-white" to="/Reg">Registration</NavLink>

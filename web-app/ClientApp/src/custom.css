@@ -92,10 +92,11 @@ body {
     height: 650px;
     max-width: 100%;
     background-image: url("../public/BG.svg");
-    background-position:center;
 }
 
-.absolute {
-    position:absolute;
-    top:0px;
+.pad {
+    min-height: 750px;
+    padding-top:300px;
+    background-position: center;
+    background-image: url(../public/BG.svg);
 }

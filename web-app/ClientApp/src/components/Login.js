@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalFooter, Input } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 
 class Login extends Component {
     constructor() {

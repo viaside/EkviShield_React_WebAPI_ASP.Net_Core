@@ -9,8 +9,9 @@
     height:100px;
 }
 
+
 .navbar-inner {
-    height: 70px;
+    height: 90px;
     position: sticky;
     top: 0;
 }
@@ -18,9 +19,13 @@
 .navbar-outer {
     display: flex;
     align-items: center;
-    position: sticky;
-    height: 100px;
+    position: fixed;
+    height: 190px;
     top: -50px;
+}
+
+.scroll_navbar .navbar {
+    background-color: rgba(59, 5, 68, .5)
 }
 
 html {
