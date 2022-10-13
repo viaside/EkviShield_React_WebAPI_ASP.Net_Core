@@ -100,3 +100,16 @@ body {
     background-position: center;
     background-image: url(../public/BG.svg);
 }
+
+.rec.rec-arrow {
+    border-radius: 0;
+
+}
+
+.rec.rec-arrow-active{
+}
+
+.rec.rec-dot{
+    border-radius:0;
+    width: 35px;
+}

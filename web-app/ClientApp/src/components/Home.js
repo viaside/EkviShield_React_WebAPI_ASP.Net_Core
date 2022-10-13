@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import { Carousel } from 'reactstrap';
+import {  } from 'reactstrap';
+import Carousel from 'react-elastic-carousel'
 import '../custom.css';
 import girl2 from '../Images/woman2.webp';
 
@@ -31,45 +32,39 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="DeffaultBackGround text-center text-white">
-                    <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <div className="DeffaultBackGround text-center p-5 text-white">
+                    <Carousel className="" itemsToShow={1}>
+                        <div className="Item">
+                            <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
+                            <h1>Text text</h1>
+                            <p>Text text text text text text</p>
                         </div>
-                        <div className="carousel-inner">
-                            <div className="carousel-item active" data-bs-interval="10000">
-                                <img src={girl2} width="250px" className=" d-block " alt="..."/>
-                                <div className="carousel-caption d-none d-md-block">
-                                        <h1>First </h1>
-                                        <p>First info</p>
-                                    </div>
-                            </div>
-                            <div className="carousel-item" data-bs-interval="2000">
-                                <img src={girl2} className="d-block " alt="..."/>
-                                <div className="carousel-caption d-none d-md-block">
-                                        <h1>Метка второго слайда</h1>
-                                        <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
-                                    </div>
-                            </div>
-                            <div className="carousel-item">
-                                <img src={girl2} className="d-block " alt="..."/>
-                                <div className="carousel-caption d-none d-md-block">
-                                        <h1>Метка третьего слайда</h1>
-                                        <p>Некоторый репрезентативный заполнитель для третьего слайда.</p>
-                                    </div>
-                            </div>
+                        <div className="Item">
+                            <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
+                            <h1>Text text</h1>
+                            <p>Text text text text text text</p>
                         </div>
-                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Предыдущий</span>
-                        </button>
-                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Следующий</span>
-                        </button>
-                    </div>
+                        <div className="Item">
+                            <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
+                            <h1>Text text</h1>
+                            <p>Text text text text text text</p>
+                        </div>
+                        <div className="Item">
+                            <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
+                            <h1>Text text</h1>
+                            <p>Text text text text text text</p>
+                        </div>
+                        <div className="Item">
+                            <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
+                            <h1>Text text</h1>
+                            <p>Text text text text text text</p>
+                        </div>
+                        <div className="Item">
+                            <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
+                            <h1>Text text</h1>
+                            <p>Text text text text text text</p>
+                        </div>
+                    </Carousel>
                 </div>
 
                 <div>
