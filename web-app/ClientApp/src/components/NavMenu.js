@@ -89,16 +89,16 @@ export class NavMenu extends Component {
 
         else {
             return (
-                <header id="header" className="navbar-outer navbar-expand-lg fixed-top">
+                <header id="header" className="navbar-outer navbar-expand-lg  fixed-top">
                     <Navbar className="container-fluid navbar-inner " container light>
                         <NavbarBrand tag={Link} to="/" className="text-white">EKVI SHIELD</NavbarBrand>
                         <div className="flex-grow-1">
-                            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <ul className="navbar-nav mr-auto mt-2 mt-lg-0 ">
                                      <NavLink tag={Link} className="text-white" to="/">Home</NavLink>
                                      <NavLink tag={Link} className="text-white" to="/Test">Test</NavLink>
                             </ul>
                         </div>
-                        <div className="flex-grow-2">
+                        <div className="flex-grow-2 ">
                                 <NavLink tag={Link} className="text-white" to="/Reg">Registration</NavLink>
                                 <NavLink tag={Link} className="text-white" to="/Login">Log in </NavLink>
                         </div>  

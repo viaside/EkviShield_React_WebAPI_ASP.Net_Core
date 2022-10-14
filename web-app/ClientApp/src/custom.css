@@ -61,6 +61,12 @@ body {
     background: #4f2d48;
 }
 
+    .DeffaultBackGround .animated {
+        opacity: 0;
+        animation-name: fadeInUp;
+        -webkit-animation-name: fadeInUp;
+    }
+
 .modal-backdrop {
     background-color: #393838;
 }
@@ -101,15 +107,60 @@ body {
     background-image: url(../public/BG.svg);
 }
 
-.rec.rec-arrow {
-    border-radius: 0;
-
+.footer{
+    padding-top:132px;
 }
 
-.rec.rec-arrow-active{
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
 }
 
-.rec.rec-dot{
-    border-radius:0;
-    width: 35px;
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
 }
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+.foo.delighter {
+    transition: all .3s ease-out;
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+    .foo.delighter.started {
+        transform: none;
+        opacity: 1;
+    }
+
+        .foo.delighter.started.ended {
+            border: solid red 10px;
+        }

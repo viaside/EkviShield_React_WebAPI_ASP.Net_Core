@@ -1,19 +1,17 @@
-import React, { Component, Item} from 'react';
+import React, { Component, Fade, Fragment, animateList } from 'react';
 import '../custom.css'
-import Carousel from 'react-elastic-carousel'
 
 class Test extends Component {
     render() {
         return (
-            <div className="Test wrapper">
-                <div className="container-fluid">
-                    <div className="container-fluid">
-                         <h1 className="text-center text-dark p-5 ">Test wrappers</h1>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
+
+        <div class="foo" data-delighter>
+            <p>
+dsa            </p>
+        </div>
+        )
+
+    };
+};
 
 export default Test;

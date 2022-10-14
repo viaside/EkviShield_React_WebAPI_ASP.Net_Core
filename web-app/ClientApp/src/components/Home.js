@@ -8,15 +8,33 @@ import girl2 from '../Images/woman2.webp';
 class Home extends Component {
     constructor(props) {
         super(props);
+
+        var minOffset = 750;
+        window.onscroll = function () {
+            let has_class = document.body.classList.contains("scroll_navbar");
+
+            if (minOffset < document.documentElement.scrollTop) {
+                if (!has_class) {
+                    document.div.add
+                }
+            } else if (has_class) {
+                document.body.classList.remove("animation");
+            }
+        }
     }
 
     render() {
+
         return (
             <div className="Home">
                 <div className="pad">
-                    <div className="text-center text-white"><h1>THE ROLE OF THE BUDGET OF THE CITY <br /> OF MOSCOW IN REDUCING POVERTY</h1></div>
+                    <div className="text-center text-white animated fadeInUp"><h1>THE ROLE OF THE BUDGET OF THE CITY <br /> OF MOSCOW IN REDUCING POVERTY</h1></div>
                 </div>
+                <div className="footer text-white ">
+                    <div class="d-flex justify-content-around"><p>Foter text</p></div>
 
+                    <div class="d-flex justify-content-center"><h1>Footer Text</h1></div>
+                </div>
                 <div className="text-dark">
                     <div>
                         <div className="bg-dark text-white p-5">
@@ -32,8 +50,8 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="DeffaultBackGround text-center p-5 text-white">
-                    <Carousel className="" itemsToShow={1}>
+                <div className="DeffaultBackGround text-center p-5 text-white ">
+                    <Carousel className="s" itemsToShow={1}>
                         <div className="Item">
                             <img height="200px" width="200px" className="p-2" src={girl2} alt="girl"></img>
                             <h1>Text text</h1>
