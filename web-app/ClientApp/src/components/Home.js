@@ -10,18 +10,18 @@ class Home extends Component {
         super(props);
 
         var minOffset = 750;
-        window.onscroll = function () {
-            let has_class = document.body.classList.contains("scroll_navbar");
+        window.addEventListener('scroll', function () {
+            window.onscroll = function () {
+                let has_class = document.body.classList.contains("scroll_navbar");
 
-            if (minOffset < document.documentElement.scrollTop) {
-                if (!has_class) {
-                    document.div.add
+                if (minOffset < document.documentElement.scrollTop) {
+                    if (!has_class) {
+                    }
+                } else if (has_class) {
                 }
-            } else if (has_class) {
-                document.body.classList.remove("animation");
             }
+        });
         }
-    }
 
     render() {
 
