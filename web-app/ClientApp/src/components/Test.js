@@ -23,7 +23,6 @@ export default class ReactReveal extends Component {
 
     handleScroll(event) {
         if (350 < window.scrollY){
-            window.scrollTo(0, this.myRef);
         }
     }
 
@@ -33,15 +32,14 @@ export default class ReactReveal extends Component {
             <Fragment>
                 <div className="pad" >
                     <div className="text-center text-white animated fadeInUp"><h1>THE ROLE OF THE BUDGET OF THE CITY <br /> OF MOSCOW IN REDUCING POVERTY</h1></div>
-                    <button className="centered" onClick={this.scrollToMyRef }></button>
                 </div>
                 {animateList.map((item, key) => (
                     <div style={styles.block} className={item.Bg} key={key}>
                         <Fade bottom big >
-                            <div>
-                                <img src={item.Image} alt="image"/>
+                            <div className="p-5 ">
+                                <img  src={item.Image} alt="image"/>
                             </div>
-                            <div ref={this.myRef}>
+                            <div className="p-5" ref={this.myRef}>
                                 <h1 style={styles.title}>{`${item.Title}`}</h1>
                                 <p style={styles.Text} />{`${item.Text}` }<p/>
                             </div>
@@ -68,5 +66,5 @@ const styles = {
     },
     text: {
 
-    }
+    },
 };
